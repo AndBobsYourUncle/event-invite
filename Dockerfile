@@ -36,6 +36,8 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git pkg-config yarn && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
+RUN yarn install
+
 # Install application gems
 COPY Gemfile Gemfile.lock ./
 RUN bundle install && \
