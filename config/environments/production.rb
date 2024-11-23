@@ -59,7 +59,7 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # Set host to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = { host: "example.com" }
+  config.action_mailer.default_url_options = { host: Rails.application.credentials.dig(:smtp, :host) }
 
   config.action_mailer.delivery_method = :smtp
 
@@ -69,8 +69,8 @@ Rails.application.configure do
     address:              'smtp.gmail.com',
     port:                 587,
     domain:               'gmail.com',
-    user_name:            smtp_creds.user_name,
-    password:             smtp_creds.password,
+    user_name:            Rails.application.credentials.dig(:smtp, :user_name),
+    password:             Rails.application.credentials.dig(:smtp, :password),
     authentication:       :plain,
     enable_starttls_auto: true
   }
