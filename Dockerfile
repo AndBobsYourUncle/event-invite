@@ -16,7 +16,7 @@ WORKDIR /rails
 
 # Install base packages
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libjemalloc2 libvips sqlite3 gnupg2 && \
+    apt-get install --no-install-recommends -y curl libjemalloc2 libvips sqlite3 npm && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Set production environment
@@ -39,12 +39,7 @@ RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
 
-ADD https://dl.yarnpkg.com/debian/pubkey.gpg /tmp/yarn-pubkey.gpg
-RUN apt-key add /tmp/yarn-pubkey.gpg && rm /tmp/yarn-pubkey.gpg
-
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y yarn && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+RUN npm install --global yarn
 
 # Copy application code
 COPY . .
