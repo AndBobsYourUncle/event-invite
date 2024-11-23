@@ -63,7 +63,7 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
 
-  smtp_creds = Rails.application.credentials.smtp.gmail
+  smtp_creds = Rails.application.credentials.smtp
 
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
