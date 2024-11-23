@@ -42,6 +42,10 @@ RUN bundle install && \
 ADD https://dl.yarnpkg.com/debian/pubkey.gpg /tmp/yarn-pubkey.gpg
 RUN apt-key add /tmp/yarn-pubkey.gpg && rm /tmp/yarn-pubkey.gpg
 
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y yarn && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+
 # Copy application code
 COPY . .
 
