@@ -1,5 +1,5 @@
 class RegistrationsController < ApplicationController
-  allow_unauthenticated_access
+  optionally_authenticate
   before_action :set_invite_by_code, only: %i[ new create ]
 
   def new
@@ -33,6 +33,10 @@ class RegistrationsController < ApplicationController
   def set_invite_by_code
     @invite = Invitation.find_by!(invite_code: params[:code], user_id: nil)
   rescue ActiveRecord::RecordNotFound
-    redirect_to new_session_path, alert: "Invitation code has already been used... please login below."
+    if Current.user.present?
+      redirect_to root_path
+    else
+      redirect_to new_session_path, alert: "Invitation code has already been used... please login below."
+    end
   end
 end

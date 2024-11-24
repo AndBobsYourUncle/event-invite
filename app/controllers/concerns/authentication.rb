@@ -10,6 +10,11 @@ module Authentication
     def allow_unauthenticated_access(**options)
       skip_before_action :require_authentication, **options
     end
+
+    def optionally_authenticate(**options)
+      skip_before_action :require_authentication, **options
+      before_action :resume_session
+    end
   end
 
   private
