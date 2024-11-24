@@ -162,6 +162,13 @@ html:has(> body#pages), html:has(> body#sessions), html:has(> body#passwords), h
     border-top-right-radius: 0;
   }
 
+  .form-signin .middle-border-input {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
   .form-signin .last-input {
     margin-bottom: 10px;
   }

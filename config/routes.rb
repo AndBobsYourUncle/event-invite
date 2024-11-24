@@ -17,6 +17,6 @@ Rails.application.routes.draw do
 
   resources :dashboards
 
-  get "invite/:code", to: "registrations#new"
-  # post "signup", to: "registrations#create"
+  get "invite/:code", to: "registrations#new", as: "invite"
+  post "invite/:code", to: "registrations#create", as: "signup"
 end

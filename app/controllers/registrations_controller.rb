@@ -9,7 +9,14 @@ class RegistrationsController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if @user.save!
+    @user.full_name = @invite.full_name
+
+    ActiveRecord::Base.transaction do
+      @user.save
+      @invite.update!(user_id: @user.id)
+    end
+
+    if @user.id.present?
       start_new_session_for(@user)
       redirect_to root_path, notice: "Signed up successfully"
     else
@@ -24,7 +31,7 @@ class RegistrationsController < ApplicationController
   end
 
   def set_invite_by_code
-    @invite = Invitation.find_by_invite_code!(params[:code])
+    @invite = Invitation.find_by!(invite_code: params[:code], user_id: nil)
   rescue ActiveRecord::RecordNotFound
     redirect_to new_session_path, alert: "Invitation code has already been used... please login below."
   end
