@@ -1,5 +1,5 @@
 class Admin::InvitationsController < ApplicationController
-  layout 'admin'
+  layout "admin"
   before_action :verify_admin
 
   def index
