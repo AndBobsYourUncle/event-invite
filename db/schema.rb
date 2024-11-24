@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_24_051524) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_24_191655) do
   create_table "invitations", force: :cascade do |t|
     t.string "full_name", null: false
     t.string "invite_code", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.string "email_address"
     t.index ["invite_code"], name: "index_invitations_on_invite_code", unique: true
     t.index ["user_id"], name: "index_invitations_on_user_id"
   end

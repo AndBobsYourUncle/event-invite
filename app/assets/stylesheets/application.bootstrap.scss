@@ -2,6 +2,48 @@
 @import 'bootstrap-icons/font/bootstrap-icons';
 
 #admin--invitations {
+  .cover-container {
+    max-width: 42em;
+  }
+
+  .form-signin {
+    width: 100%;
+    max-width: 450px;
+    padding: 15px;
+    margin: auto;
+  }
+
+  .form-signin .checkbox {
+    font-weight: 400;
+  }
+
+  .form-signin .form-floating:focus-within {
+    z-index: 2;
+  }
+
+  .form-signin .top-border-input {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .form-signin .bottom-border-input {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .form-signin .middle-border-input {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .form-signin .last-input {
+    margin-bottom: 10px;
+  }
+
   .bi {
     display: inline-block;
     width: 1rem;
