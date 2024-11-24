@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_24_001548) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_24_021540) do
   create_table "sessions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "ip_address"
@@ -26,6 +26,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_24_001548) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin"
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
