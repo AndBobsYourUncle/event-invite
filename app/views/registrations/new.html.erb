@@ -26,11 +26,11 @@
     <main class="form-signin">
       <%= form_with(model: @user, url: signup_path(params[:code]), data: { turbo: false }) do |form| %>
         <div class="form-floating">
-          <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "form-control top-border-input", id: "floatingInput" %>
+          <%= form.email_field :email_address, required: true, autofocus: !@user.email_address.present?, autocomplete: "username", placeholder: "Enter your email address", value: @user.email_address, class: "form-control top-border-input", id: "floatingInput" %>
           <label for="floatingInput">Email address</label>
         </div>
         <div class="form-floating">
-          <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: "form-control middle-border-input", id: "floatingPassword" %>
+          <%= form.password_field :password, required: true, autofocus: @user.email_address.present?, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: "form-control middle-border-input", id: "floatingPassword" %>
           <label for="floatingPassword">Password</label>
         </div>
         <div class="form-floating">
