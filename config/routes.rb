@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :dashboards
+
+  get "invite/:code", to: "registrations#new"
+  # post "signup", to: "registrations#create"
 end

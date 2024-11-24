@@ -6,25 +6,31 @@
   </header>
 
   <main role="main" class="inner cover">
-    <!-- <%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-    <%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %> -->
+    <% if flash[:alert] %>
+      <div class="alert alert-danger" role="alert"><%=flash[:alert]%></div>
+    <% end %>
+
+    <% if flash[:notice] %>
+      <div class="alert alert-primary" role="alert"><%=flash[:notice]%></div>
+    <% end %>
 
     <p class="lead">Welcome to our baby shower invite page! If this is the first time you are visiting, we need you to verify your email by clicking here:</p>
-    <%= link_to "Reset Password", new_password_path, class: "btn btn-primary", role: "button" %>
     <main class="form-signin">
       <%= form_with url: session_path do |form| %>
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
         <div class="form-floating">
-          <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "form-control", id: "floatingInput" %>
+          <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "form-control top-border-input", id: "floatingInput" %>
           <label for="floatingInput">Email address</label>
         </div>
         <div class="form-floating">
-          <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: "form-control", id: "floatingPassword" %>
+          <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: "form-control bottom-border-input", id: "floatingPassword" %>
           <label for="floatingPassword">Password</label>
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
       <% end %>
+      <br/>
+      <%= link_to "Reset Password", new_password_path, class: "btn btn-outline-primary float-end", role: "button" %>
     </main>
   </main>
 

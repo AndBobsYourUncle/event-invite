@@ -129,12 +129,12 @@
   }
 }
 
-html:has(> body#pages), html:has(> body#sessions), html:has(> body#passwords) {
+html:has(> body#pages), html:has(> body#sessions), html:has(> body#passwords), html:has(> body#registrations) {
   height: 100%;
   background-color: #333;
 }
 
-#sessions, #passwords {
+#sessions, #passwords, #registrations {
   .form-signin {
     width: 100%;
     max-width: 330px;
@@ -150,16 +150,20 @@ html:has(> body#pages), html:has(> body#sessions), html:has(> body#passwords) {
     z-index: 2;
   }
 
-  .form-signin input[type="email"] {
+  .form-signin .top-border-input {
     margin-bottom: -1px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
   }
 
-  .form-signin input[type="password"] {
+  .form-signin .bottom-border-input {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+  }
+
+  .form-signin .last-input {
+    margin-bottom: 10px;
   }
 
   .bd-placeholder-img {
@@ -177,7 +181,7 @@ html:has(> body#pages), html:has(> body#sessions), html:has(> body#passwords) {
   }
 }
 
-#pages, #sessions, #passwords {
+#pages, #sessions, #passwords, #registrations {
   height: 100%;
   background-color: #333;
 
