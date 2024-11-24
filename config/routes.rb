@@ -15,8 +15,10 @@ Rails.application.routes.draw do
   # root "posts#index"
   root to: "pages#home"
 
-  resources :dashboards
-
   get "invite/:code", to: "registrations#new", as: "invite"
   post "invite/:code", to: "registrations#create", as: "signup"
+
+  namespace :admin do
+    root to: "index"
+  end
 end
