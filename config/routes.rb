@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   post "invite/:code", to: "registrations#create", as: "signup"
 
   namespace :admin do
-    root to: "index"
+    root to: redirect('admin/invitations')
+
+    resources :invitations
   end
 end
