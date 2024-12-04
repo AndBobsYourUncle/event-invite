@@ -1,25 +1,21 @@
-<div class="vw-100 vh-100 d-flex flex-row">
-  <div class="align-self-center vw-100">
-    <div class="d-flex justify-content-center">
-      <main class="container-xs text-white bg-dark">
-        <% if flash[:alert] %>
-          <div class="alert alert-danger" role="alert"><%=flash[:alert]%></div>
-        <% end %>
+<div class="align-self-center">
+  <main class="container-xs text-white bg-dark text-center">
+    <% if flash[:alert] %>
+      <div class="alert alert-danger" role="alert"><%=flash[:alert]%></div>
+    <% end %>
 
-        <% if flash[:notice] %>
-          <div class="alert alert-primary" role="alert"><%=flash[:notice]%></div>
-        <% end %>
+    <% if flash[:notice] %>
+      <div class="alert alert-primary" role="alert"><%=flash[:notice]%></div>
+    <% end %>
 
-        <%= form_with url: passwords_path do |form| %>
-          <p class="lead">Enter your email to receive a link to set up a new password:</p>
+    <%= form_with url: passwords_path do |form| %>
+      <p class="lead">Enter your email to receive a link to set up a new password:</p>
 
-          <div class="form-floating">
-            <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "form-control", id: "email_input" %>
-            <label for="email_input">Email address</label>
-          </div>
-          <button class="w-100 btn btn-lg btn-primary" type="submit">Send Reset Email</button>
-        <% end %>
-      </main>
-    </div>
-  </div>
+      <div class="form-floating">
+        <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "form-control", id: "email_input" %>
+        <label for="email_input">Email address</label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Send Reset Email</button>
+    <% end %>
+  </main>
 </div>

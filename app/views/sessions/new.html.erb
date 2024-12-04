@@ -1,31 +1,27 @@
-<div class="vw-100 vh-100 d-flex flex-row">
-  <div class="align-self-center vw-100">
-    <div class="d-flex justify-content-center">
-      <main class="container-xs text-white bg-dark">
-        <% if flash[:alert] %>
-          <div class="alert alert-danger" role="alert"><%=flash[:alert]%></div>
-        <% end %>
+<div class="align-self-center">
+  <main class="container-xs text-white bg-dark">
+    <% if flash[:alert] %>
+      <div class="alert alert-danger" role="alert"><%=flash[:alert]%></div>
+    <% end %>
 
-        <% if flash[:notice] %>
-          <div class="alert alert-primary" role="alert"><%=flash[:notice]%></div>
-        <% end %>
+    <% if flash[:notice] %>
+      <div class="alert alert-primary" role="alert"><%=flash[:notice]%></div>
+    <% end %>
 
-        <%= form_with url: session_path do |form| %>
-          <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+    <%= form_with url: session_path do |form| %>
+      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
-          <div class="form-floating">
-            <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "form-control", id: "email_input" %>
-            <label for="email_input">Email address</label>
-          </div>
-          <div class="form-floating">
-            <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: "form-control", id: "password_input" %>
-            <label for="password_input">Password</label>
-          </div>
-          <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-        <% end %>
-        <br/>
-        <%= link_to "Reset Password", new_password_path, class: "btn btn-outline-primary float-end", role: "button" %>
-      </main>
-    </div>
-  </div>
+      <div class="form-floating">
+        <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "form-control", id: "email_input" %>
+        <label for="email_input">Email address</label>
+      </div>
+      <div class="form-floating">
+        <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: "form-control", id: "password_input" %>
+        <label for="password_input">Password</label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    <% end %>
+    <br/>
+    <%= link_to "Reset Password", new_password_path, class: "btn btn-outline-primary float-end", role: "button" %>
+  </main>
 </div>
