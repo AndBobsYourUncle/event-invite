@@ -1,50 +1,39 @@
-<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-  <header class="masthead mb-auto">
-    <div class="inner">
-      <h3 class="masthead-brand">Cover</h3>
+<div class="vw-100 vh-100 d-flex flex-row">
+  <div class="align-self-center vw-100">
+    <div class="d-flex justify-content-center">
+      <main class="container-xs text-white bg-dark">
+        <% if flash[:alert] %>
+          <div class="alert alert-danger" role="alert"><%=flash[:alert]%></div>
+        <% end %>
+
+        <% if flash[:notice] %>
+          <div class="alert alert-primary" role="alert"><%=flash[:notice]%></div>
+        <% end %>
+
+        <% if @user.errors.any? %>
+          <% @user.errors.full_messages.each do |message| %>
+            <div class="alert alert-danger" role="alert"><%= message %></div>
+          <% end %>
+        <% end %>
+
+        <%= form_with(model: @user, url: signup_path(params[:code]), data: { turbo: false }) do |form| %>
+          <p class="lead">Please RSVP!</p>
+
+          <div class="form-floating">
+            <%= form.email_field :email_address, required: true, autofocus: !@user.email_address.present?, autocomplete: "username", placeholder: "Enter your email address", value: @user.email_address, class: "form-control", id: "email_input" %>
+            <label for="email_input">Email address</label>
+          </div>
+          <div class="form-floating">
+            <%= form.password_field :password, required: true, autofocus: @user.email_address.present?, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: "form-control", id: "password_input" %>
+            <label for="password_input">Password</label>
+          </div>
+          <div class="form-floating">
+            <%= form.password_field :password_confirmation, required: true, autocomplete: "confirm-password", placeholder: "Confirm your password", maxlength: 72, class: "form-control mb-2", id: "password_confirm_input" %>
+            <label for="password_confirm_input">Confirm password</label>
+          </div>
+          <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+        <% end %>
+      </main>
     </div>
-  </header>
-
-  <main role="main" class="inner cover">
-    <h1 class="cover-heading">Welcome <%=@invite.full_name%>!</h1>
-
-    <% if flash[:alert] %>
-      <div class="alert alert-danger" role="alert"><%=flash[:alert]%></div>
-    <% end %>
-
-    <% if flash[:notice] %>
-      <div class="alert alert-primary" role="alert"><%=flash[:notice]%></div>
-    <% end %>
-
-    <% if @user.errors.any? %>
-      <% @user.errors.full_messages.each do |message| %>
-        <div class="alert alert-danger" role="alert"><%= message %></div>
-      <% end %>
-    <% end %>
-
-    <p class="lead">Please RSVP!</p>
-    <main class="form-signin">
-      <%= form_with(model: @user, url: signup_path(params[:code]), data: { turbo: false }) do |form| %>
-        <div class="form-floating">
-          <%= form.email_field :email_address, required: true, autofocus: !@user.email_address.present?, autocomplete: "username", placeholder: "Enter your email address", value: @user.email_address, class: "form-control top-border-input", id: "floatingInput" %>
-          <label for="floatingInput">Email address</label>
-        </div>
-        <div class="form-floating">
-          <%= form.password_field :password, required: true, autofocus: @user.email_address.present?, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: "form-control middle-border-input", id: "floatingPassword" %>
-          <label for="floatingPassword">Password</label>
-        </div>
-        <div class="form-floating">
-          <%= form.password_field :password_confirmation, required: true, autocomplete: "confirm-password", placeholder: "Confirm your password", maxlength: 72, class: "form-control bottom-border-input", id: "floatingPasswordConfirm" %>
-          <label for="floatingPasswordConfirm">Confirm password</label>
-        </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-      <% end %>
-    </main>
-  </main>
-
-  <footer class="mastfoot mt-auto">
-    <%# <div class="inner">
-      <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-    </div> %>
-  </footer>
+  </div>
 </div>

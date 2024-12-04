@@ -1,17 +1,25 @@
-<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+<div class="d-flex justify-content-center">
+  <% if flash[:alert] %>
+    <div class="alert alert-danger" role="alert"><%=flash[:alert]%></div>
+  <% end %>
 
-<main role="main" class="form-signin">
-<%= form_with(model: @invite, url: admin_invitations_path, data: { turbo: false }) do |form| %>
-  <div class="form-floating">
-    <%= form.email_field :email_address, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "form-control top-border-input", id: "floatingInput" %>
-    <label for="floatingInput">Email address</label>
-  </div>
-  <div class="form-floating">
-    <%= form.text_field :full_name, required: true, autocomplete: "full-name", placeholder: "Full name", maxlength: 72, class: "form-control bottom-border-input", id: "floatingPassword" %>
-    <label for="floatingPassword">Full name</label>
-  </div>
-  <button class="w-100 btn btn-lg btn-primary" type="submit">Create</button>
-<% end %>
-</main>
+  <% if flash[:notice] %>
+    <div class="alert alert-primary" role="alert"><%=flash[:notice]%></div>
+  <% end %>
 
+  <main role="main" class="form-signin">
+    <%= form_with(model: @invite, url: admin_invitations_path, data: { turbo: false }) do |form| %>
+      <h1 class="h3 mb-3 fw-normal">Create new invitation</h1>
+
+      <div class="form-floating">
+        <%= form.email_field :email_address, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "form-control top-border-input", id: "email_input" %>
+        <label for="email_input">Email address</label>
+      </div>
+      <div class="form-floating">
+        <%= form.text_field :full_name, required: true, autocomplete: "full-name", placeholder: "Full name", maxlength: 72, class: "form-control bottom-border-input", id: "password_input" %>
+        <label for="password_input">Full name</label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Create</button>
+    <% end %>
+  </main>
 </div>
