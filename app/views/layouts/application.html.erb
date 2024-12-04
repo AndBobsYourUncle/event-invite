@@ -27,7 +27,25 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script>
   </head>
 
-  <body id="<%= params[:controller].gsub(/[^\w]+/,'--') %>" class="<%= params[:action].gsub(/[^\w]+/,'') %>">
+  <body id="new_<%= params[:controller].gsub(/[^\w]+/,'--') %>" class="new_<%= params[:action].gsub(/[^\w]+/,'') %>">
+    <nav class="navbar fixed-top navbar-dark bg-dark p-3">
+      <div class="container-xs">
+        <%# <a class="navbar-brand vw-100" href="#">Fixed top</a> %>
+        <header class="masthead mb-auto">
+          <div class="inner">
+            <h3 class="masthead-brand float-start">Cover</h3>
+              <% if Current.user&.admin? %>
+                <nav class="nav nav-masthead justify-content-center float-end">
+                  <%# <a class="nav-link active" href="#">Home</a> %>
+                  <%# <a class="nav-link" href="#">Features</a> %>
+                  <a class="nav-link" href="<%=admin_invitations_path%>">Admin</a>
+                </nav>
+              <% end %>
+          </div>
+        </header>
+      </div>
+    </nav>
+
     <%= yield %>
   </body>
 </html>

@@ -1,5 +1,7 @@
 class PasswordsController < ApplicationController
-  allow_unauthenticated_access
+  optionally_authenticate
+  before_action :redirect_signed_in
+
   before_action :set_user_by_token, only: %i[ edit update ]
 
   def new
@@ -25,6 +27,12 @@ class PasswordsController < ApplicationController
   end
 
   private
+    def redirect_signed_in
+      if Current.user.present?
+        redirect_to root_path
+      end
+    end
+
     def set_user_by_token
       @user = User.find_by_password_reset_token!(params[:token])
     rescue ActiveSupport::MessageVerifier::InvalidSignature
