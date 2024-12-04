@@ -27,9 +27,9 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script>
   </head>
 
-  <body id="new_<%= params[:controller].gsub(/[^\w]+/,'--') %>" class="new_<%= params[:action].gsub(/[^\w]+/,'') %>">
-    <div class="d-flex flex-column align-items-center vh-100 vw-100">
-      <div class="p-2 container-xs">
+  <body>
+    <div class="d-flex flex-column align-items-center vw-100" style="height:100%;">
+      <div class="p-3 container-xs">
         <h3 class="float-start">Cover</h3>
         <% if Current.user&.admin? %>
           <nav class="nav justify-content-center float-end">
@@ -37,7 +37,7 @@
           </nav>
         <% end %>
       </div>
-      <div class="p-2 flex-grow-1 d-flex">
+      <div class="p-2 flex-fill d-flex">
         <%= yield %>
       </div>
     </div>

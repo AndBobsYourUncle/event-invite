@@ -22,3 +22,7 @@
         height: 100%;
     }
 }
+
+// needed for mobile because 100vh is broken
+// https://www.reddit.com/r/webdev/comments/db9ugh/avoid_100vh_on_mobile_web/
+html, body { height: 100% }

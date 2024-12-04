@@ -27,12 +27,12 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script>
   </head>
 
-  <body id="<%= params[:controller].gsub(/[^\w]+/,'--') %>" class="<%= params[:action].gsub(/[^\w]+/,'') %>">
+  <body>
     <!-- https://stackoverflow.com/questions/48472771/bootstrap-responsive-sidebar-menu-to-top-navbar -->
 
     <!-- added align-self-start to each nav element -->
     <div class="container-fluid overflow-hidden">
-        <div class="row vh-100 overflow-auto">
+        <div class="row overflow-auto" style="height:100%;">
             <div class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 bg-dark d-flex sticky-top">
                 <div class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3 pt-2 text-white">
                     <a href="/" class="align-self-start d-flex align-items-center pb-sm-3 mb-md-0 me-md-auto text-white text-decoration-none">
