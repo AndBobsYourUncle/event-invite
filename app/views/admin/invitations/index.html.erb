@@ -1,32 +1,35 @@
-<h2>Invitations</h2>
-<%= link_to "Create", new_admin_invitation_path, class: "btn btn-primary mb-2", role: "button" %>
-
-<div class="table-responsive small">
-  <table class="table table-striped table-sm">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Full Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Invite Link</th>
-        <th scope="col">Linked User</th>
-        <th scope="col">Linked At</th>
-        <th scope="col">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @invites.each do |invite| %>
-      <tr>
-        <td><%=invite.id%></td>
-        <td><%=invite.full_name%></td>
-        <td><%=invite.email_address%></td>
-        <td><%=link_to invite_url(invite.invite_code), invite_url(invite.invite_code)%></td>
-        <td><%=invite.user.present?%></td>
-        <td><%=(invite.updated_at if invite.user.present?)%></td>
-        <td><%=link_to 'Delete', admin_invitation_path(invite), class: "btn btn-outline-danger btn-sm",
-  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}%></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div>
+  <h2>Invitations</h2>
+  <%= link_to "Create", new_admin_invitation_path, class: "btn btn-primary mb-2", role: "button" %>
+</div>
+<div class="flex-fill">
+  <div class="table-responsive small">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Full Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Invite Link</th>
+          <th scope="col">Linked User</th>
+          <th scope="col">Linked At</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @invites.each do |invite| %>
+        <tr>
+          <td><%=invite.id%></td>
+          <td><%=invite.full_name%></td>
+          <td><%=invite.email_address%></td>
+          <td><%=link_to invite_url(invite.invite_code), invite_url(invite.invite_code)%></td>
+          <td><%=invite.user.present?%></td>
+          <td><%=(invite.updated_at if invite.user.present?)%></td>
+          <td><%=link_to 'Delete', admin_invitation_path(invite), class: "btn btn-outline-danger btn-sm",
+    data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}%></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
