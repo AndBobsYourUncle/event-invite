@@ -51,7 +51,10 @@ class Admin::EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :event_time, :rsvp_by, :location, :address_1, :city, :state, :zip, event_contacts_attributes: [ :id, :name, :phone_number, :_destroy ])
+    params.require(:event).permit(
+      :name, :event_time, :rsvp_by, :location, :address_1, :city, :state, :zip,
+      event_contacts_attributes: [ :id, :name, :phone_number, :_destroy ],
+      event_registries_attributes: [ :id, :name, :link, :_destroy ])
   end
 
   def verify_admin

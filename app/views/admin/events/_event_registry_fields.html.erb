@@ -1,0 +1,12 @@
+<tr class="wrapper-div">
+  <td>
+    <%= form.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Name", class: "form-control", id: "registry_name_input" %>
+    <%# <label for="contact_name_input">Name</label> %>
+  </td>
+  <td>
+    <%= form.text_field :link, autofocus: true, autocomplete: "link", placeholder: "Link", class: "form-control", id: "registry_link_input" %>
+  </td>
+  <td>
+    <%= link_to_remove_nested(form, fields_wrapper_selector: '.wrapper-div', link_classes: 'btn btn-outline-danger btn-sm') %>
+  </td>
+</tr>
