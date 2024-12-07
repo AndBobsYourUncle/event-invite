@@ -49,8 +49,7 @@ class Admin::EventsController < ApplicationController
   end
 
   def event_params
-    # puts params.inspect
-    params.expect(event: [ :name ])
+    params.expect(event: [ :name, :event_time, :rsvp_by, :location, :city, :state, :zip ])
   end
 
   def verify_admin

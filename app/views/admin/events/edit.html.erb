@@ -18,6 +18,42 @@
               <%= form.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Event name", class: "form-control", id: "name_input" %>
               <label for="name_input">Event name</label>
             </div>
+
+            <div class="form-floating">
+              <%= form.datetime_field :event_time, autofocus: true, autocomplete: "event_time", placeholder: "Event time", class: "form-control", id: "time_input" %>
+              <label for="time_input">Event time</label>
+            </div>
+
+            <div class="form-floating">
+              <%= form.datetime_field :rsvp_by, autofocus: true, autocomplete: "rsvp_by", placeholder: "RSVP by", class: "form-control", id: "rsvp_input" %>
+              <label for="rsvp_input">RSVP by</label>
+            </div>
+
+            <div class="form-floating">
+              <%= form.text_field :location, autofocus: true, autocomplete: "location", placeholder: "Location", class: "form-control", id: "location_input" %>
+              <label for="location_input">Location</label>
+            </div>
+
+            <div class="form-floating">
+              <%= form.text_field :address_1, autofocus: true, autocomplete: "address_1", placeholder: "Address", class: "form-control", id: "address_1_input" %>
+              <label for="address_1_input">Address</label>
+            </div>
+
+            <div class="form-floating">
+              <%= form.text_field :city, autofocus: true, autocomplete: "city", placeholder: "City", class: "form-control", id: "city_input" %>
+              <label for="city_input">City</label>
+            </div>
+
+            <div class="form-floating">
+              <%= form.text_field :state, autofocus: true, autocomplete: "state", placeholder: "State", class: "form-control", id: "state_input" %>
+              <label for="state_input">State</label>
+            </div>
+
+            <div class="form-floating">
+              <%= form.text_field :zip, autofocus: true, autocomplete: "zip", placeholder: "Zip", class: "form-control", id: "zip_input" %>
+              <label for="zip_input">Zip</label>
+            </div>
+
             <button class="w-100 btn btn-lg btn-primary" type="submit">Update</button>
           <% end %>
         </main>
