@@ -67,3 +67,5 @@ gem "cssbundling-rails", "~> 1.4"
 gem "jsbundling-rails", "~> 1.3"
 
 gem "letter_opener", "~> 1.10.0", group: :development
+
+gem "vanilla_nested", "~> 1.7"

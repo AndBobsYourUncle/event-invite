@@ -15,6 +15,8 @@ class Admin::EventsController < ApplicationController
   end
 
   def update
+    puts event_params.inspect
+
     if @event.update!(event_params)
       redirect_to admin_events_path, notice: "Event updated"
     else
@@ -49,7 +51,7 @@ class Admin::EventsController < ApplicationController
   end
 
   def event_params
-    params.expect(event: [ :name, :event_time, :rsvp_by, :location, :city, :state, :zip ])
+    params.require(:event).permit(:name, :event_time, :rsvp_by, :location, :address_1, :city, :state, :zip, event_contacts_attributes: [ :id, :name, :phone_number, :_destroy ])
   end
 
   def verify_admin
