@@ -54,12 +54,26 @@
               <label for="zip_input">Zip</label>
             </div>
 
-            <%= link_to_add_nested(form, :event_contacts, '#event-contacts') %>
-            <div class="container-xs">
-              <div id="event-contacts">
-                <%= form.fields_for :event_contacts do |event_contact| %>
-                  <%= render 'event_contact_fields', form: event_contact %>
-                <% end %>
+            <div class="p-4 d-flex flex-column">
+              <div>
+                <%= link_to_add_nested(form, :event_contacts, '#event-contacts', link_classes: "btn btn-outline-primary btn-sm float-end", link_text: "Add Contact") %>
+              </div>
+
+              <div class="table-responsive small">
+                <table class="table table-striped table-sm">
+                  <thead>
+                    <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">Phone</th>
+                      <th scope="col">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="event-contacts">
+                    <%= form.fields_for :event_contacts do |event_contact| %>
+                      <%= render 'event_contact_fields', form: event_contact %>
+                    <% end %>
+                  </tbody>
+                </table>
               </div>
             </div>
 

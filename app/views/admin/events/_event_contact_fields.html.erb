@@ -1,5 +1,12 @@
-<div class="form-floating">
-  <%= form.text_field :name, autofocus: true, autocomplete: "name", placeholder: "State", class: "form-control", id: "contact_name_input" %>
-  <label for="contact_name_input">Name</label>
-  <%= link_to_remove_nested(form) %>
-</div>
+<tr class="wrapper-div">
+  <td>
+    <%= form.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Name", class: "form-control", id: "contact_name_input" %>
+    <%# <label for="contact_name_input">Name</label> %>
+  </td>
+  <td>
+    <%= form.text_field :phone_number, autofocus: true, autocomplete: "phone_number", placeholder: "Phone number", class: "form-control", id: "contact_name_phone" %>
+  </td>
+  <td>
+    <%= link_to_remove_nested(form, fields_wrapper_selector: '.wrapper-div', link_classes: 'btn btn-outline-danger btn-sm') %>
+  </td>
+</tr>
