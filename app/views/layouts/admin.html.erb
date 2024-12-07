@@ -61,6 +61,13 @@
             <% end %>
             <!-- </a> -->
           </li>
+          <li>
+            <!-- <a href="#" class="nav-link px-sm-0 px-2"> -->
+            <%= link_to(admin_events_path, class: "nav-link px-2 #{'active' if params[:controller] == 'admin/events'}") do %>
+              <i class="fs-5 bi-calendar-range"></i><span class="ms-1 d-none d-sm-inline">Events</span>
+            <% end %>
+            <!-- </a> -->
+          </li>
         </ul>
       </div>
       </div>

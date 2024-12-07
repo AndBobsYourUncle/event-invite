@@ -1,0 +1,27 @@
+<div class="d-flex flex-column" style="height:100%;">
+  <div class="d-flex flex-grow-1 justify-content-center align-items-center">
+    <div class="align-self-center flex-fill">
+      <div class="d-flex justify-content-center p-2">
+        <main role="main" class="form-signin container-xs">
+          <% if flash[:alert] %>
+            <div class="alert alert-danger" role="alert"><%=flash[:alert]%></div>
+          <% end %>
+
+          <% if flash[:notice] %>
+            <div class="alert alert-primary" role="alert"><%=flash[:notice]%></div>
+          <% end %>
+
+          <%= form_with(model: @event, url: admin_events_path, data: { turbo: false }) do |form| %>
+            <h1 class="h3 mb-3 fw-normal">Create new event</h1>
+
+            <div class="form-floating">
+              <%= form.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Event name", class: "form-control", id: "name_input" %>
+              <label for="name_input">Event name</label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Create</button>
+          <% end %>
+        </main>
+      </div>
+    </div>
+  </div>
+</div>

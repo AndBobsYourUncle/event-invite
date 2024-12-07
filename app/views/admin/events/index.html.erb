@@ -1,0 +1,38 @@
+<div>
+  <% if flash[:alert] %>
+    <div class="alert alert-danger" role="alert"><%=flash[:alert]%></div>
+  <% end %>
+
+  <% if flash[:notice] %>
+    <div class="alert alert-primary" role="alert"><%=flash[:notice]%></div>
+  <% end %>
+
+  <h2>Events</h2>
+  <%= link_to "Create", new_admin_event_path, class: "btn btn-primary mb-2", role: "button" %>
+</div>
+<div class="flex-fill">
+  <div class="table-responsive small">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @events.each do |event| %>
+        <tr>
+          <td><%=event.id%></td>
+          <td><%=event.name%></td>
+          <td>
+            <%=link_to 'Edit', edit_admin_event_path(event), class: "btn btn-outline-primary btn-sm"%>
+            <%=link_to 'Delete', admin_event_path(event), class: "btn btn-outline-danger btn-sm",
+    data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}%>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
