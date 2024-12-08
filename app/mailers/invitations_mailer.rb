@@ -4,10 +4,8 @@ class InvitationsMailer < ApplicationMailer
 
     subject = "#{@invite.full_name} RSVP'd #{@invite.rsvp_answer_yes? ? "Yes" : "No"}"
 
-    admin_emails = User.where(admin: true).map(&:email_address)
+    admin_emails = User.where(admin: true).collect(&:email_address).join(",")
 
-    admin_emails.each do |admin_email|
-      mail subject: subject, to: admin_email
-    end
+    mail subject: subject, to: admin_emails
   end
 end
