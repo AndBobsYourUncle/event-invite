@@ -4,7 +4,7 @@ class Admin::InvitationsController < ApplicationController
   before_action :get_invite, only: %i[ edit update destroy ]
 
   def index
-    @invites = Invitation.all
+    @invites = Invitation.all.order(rsvp_count: :desc, rsvp_answer: :desc)
 
     @total_yes = @invites.map(&:rsvp_count).map(&:to_i).reduce(:+)
   end
