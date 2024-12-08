@@ -1,12 +1,13 @@
 <div class="align-self-center overflow-auto">
   <main class="container-xs text-white bg-dark text-center">
     <h5 class="fw-lighter fst-italic">Our Little Prince is on the Way!</h5>
+    <hr/>
     <h1 class="display-3"><%=Current.user.full_name.to_s%></h1>
     <h4 class="text-uppercase">You are invited to <%=@event.name%></h3>
-    <p class="text-uppercase">that will be held on</p>
+    <p class="text-uppercase fw-lighter">that will be held on</p>
     <h5><%=@event.event_time.strftime("%A, %b. %e %Y")%></h5>
-    <p><small><%=@event.event_time.strftime("%l:%M %P")%></small></p>
-    <p>
+    <h5><%=@event.event_time.strftime("%l:%M %P")%></h5>
+    <p class="fw-lighter">
       <%=@event.location%><br/>
       <% if @event.address_1.present? %>
         <%=@event.address_1%><br/>
@@ -18,9 +19,9 @@
       <h5><%=contact.name%>: <%=contact.phone_number%></h5>
     <% end %>
     <hr/>
-    <p><small>We will be hosting a diaper raffle for those who wish to participate for a chance to win a prize!</small></p>
+    <p class="fw-lighter">We will be hosting a diaper raffle for those who wish to participate for a chance to win a prize!</p>
     <% if @event.event_registries.length > 0 %>
-      <p><small>
+      <p class="fw-lighter">
         We are registered at
 
         <% @event.event_registries.each_with_index do |er, idx| %>
@@ -35,7 +36,7 @@
               end
             end
           %><% end %>, if you wish to browse our wish list.
-      </small></p>
+      </p>
     <% end %>
   </main>
 </div>
