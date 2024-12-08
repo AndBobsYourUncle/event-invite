@@ -2,7 +2,7 @@
   <main class="container-xs text-white bg-dark text-center">
     <h5 class="fw-lighter fst-italic">Our Little Prince is on the Way!</h5>
     <hr/>
-    <h1 class="display-3"><%=Current.user.full_name.to_s%></h1>
+    <h1 class="display-3"><%=(Current.user&.full_name || @invite.full_name).to_s%></h1>
     <h4 class="text-uppercase">You are invited to <%=@event.name%></h3>
     <p class="text-lowercase fw-lighter">that will be held on</p>
     <h5><%=@event.event_time.strftime("%A, %b. #{@event.event_time.day.ordinalize} %Y")%></h5>

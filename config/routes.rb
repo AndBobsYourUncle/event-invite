@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get "invite/:code", to: "registrations#new", as: "invite"
   patch "invite/:code", to: "registrations#create", as: "signup"
 
-  resources :invitations, only: [:edit, :update]
+  resources :invitations, only: [ :edit, :update ]
 
   namespace :admin do
     root to: redirect("admin/invitations")

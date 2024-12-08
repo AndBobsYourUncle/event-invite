@@ -25,14 +25,14 @@ class RegistrationsController < ApplicationController
 
   def invite_params
     params.require(:invitation).permit(:rsvp_answer, :rsvp_count,
-      user_attributes: [:full_name, :email_address, :password, :password_confirmation])
+      user_attributes: [ :full_name, :email_address, :password, :password_confirmation ])
   end
 
   def set_invite_by_code
     if Current.user.present?
       redirect_to root_path
 
-      return
+      nil
     else
       begin
         @invite = Invitation.find_by!(invite_code: params[:code], user_id: nil)
