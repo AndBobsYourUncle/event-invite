@@ -5,6 +5,8 @@ class Admin::InvitationsController < ApplicationController
 
   def index
     @invites = Invitation.all
+
+    @total_yes = @invites.map(&:rsvp_count).map(&:to_i).reduce(:+)
   end
 
   def new
