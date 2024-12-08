@@ -31,7 +31,13 @@
         <% @invites.each do |invite| %>
         <tr>
           <td><%=invite.id%></td>
-          <td><%=invite.rsvp_answer.humanize%></td>
+          <td class="<%=
+            if invite.rsvp_answer_yes?
+              "bg-success"
+            elsif invite.rsvp_answer_no?
+              "bg-danger"
+            end
+          %>"><%=invite.rsvp_answer.humanize%></td>
           <td><%=invite.rsvp_count%></td>
           <td><%=invite.full_name%></td>
           <td><%=invite.email_address%></td>
