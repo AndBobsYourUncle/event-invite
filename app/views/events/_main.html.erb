@@ -1,0 +1,43 @@
+<div class="align-self-center overflow-auto">
+  <main class="container-xs text-white bg-dark text-center">
+    <h5 class="fw-lighter fst-italic">Our Little Prince is on the Way!</h5>
+    <hr/>
+    <h1 class="display-3"><%=Current.user.full_name.to_s%></h1>
+    <h4 class="text-uppercase">You are invited to <%=@event.name%></h3>
+    <p class="text-lowercase fw-lighter">that will be held on</p>
+    <h5><%=@event.event_time.strftime("%A, %b. #{@event.event_time.day.ordinalize} %Y")%></h5>
+    <h5><%=@event.event_time.strftime("%l:%M %P")%></h5>
+    <p class="fw-lighter">
+      <%=@event.location%><br/>
+      <% if @event.address_1.present? %>
+        <%=@event.address_1%><br/>
+      <% end %>
+      <%="#{@event.city}, #{@event.state} #{@event.zip}"%>
+    </p>
+    <h5>RSVP by <%=@event.rsvp_by.strftime("%b. #{@event.rsvp_by.day.ordinalize}")%></h5>
+    <% @event.event_contacts.each do |contact| %>
+      <p class="fw-lighter mb-0"><small><%=contact.name%>: <%=contact.phone_number%></small></p>
+    <% end %>
+    <hr/>
+    <%= yield %>
+    <p class="fw-lighter mx-auto" style="max-width:28rem;">We will be hosting a diaper raffle for those who wish to participate for a chance to win a prize!</p>
+    <% if @event.event_registries.length > 0 %>
+      <p class="fw-lighter mx-auto" style="max-width:28rem;">
+        We are registered at
+
+        <% @event.event_registries.each_with_index do |er, idx| %>
+          <%=link_to er.name, er.link%><%=
+            if @event.event_registries.length <= 2 && idx < @event.event_registries.length - 1
+              " & "
+            elsif @event.event_registries.length > 2
+              if idx < @event.event_registries.length - 2
+                ", "
+              elsif idx < @event.event_registries.length - 1
+                " & "
+              end
+            end
+          %><% end %>, if you wish to browse our wish list.
+      </p>
+    <% end %>
+  </main>
+</div>
