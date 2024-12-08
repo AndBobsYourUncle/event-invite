@@ -19,9 +19,9 @@
       <h5><%=contact.name%>: <%=contact.phone_number%></h5>
     <% end %>
     <hr/>
-    <p class="fw-lighter">We will be hosting a diaper raffle for those who wish to participate for a chance to win a prize!</p>
+    <p class="fw-lighter mx-auto" style="max-width:28rem;">We will be hosting a diaper raffle for those who wish to participate for a chance to win a prize!</p>
     <% if @event.event_registries.length > 0 %>
-      <p class="fw-lighter">
+      <p class="fw-lighter mx-auto" style="max-width:28rem;">
         We are registered at
 
         <% @event.event_registries.each_with_index do |er, idx| %>
