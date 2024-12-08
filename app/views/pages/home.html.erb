@@ -11,7 +11,7 @@
 -->
 <div class="align-self-center overflow-auto">
   <main class="container-xs text-white bg-dark text-center">
-    <h5>Our Little Prince is on the Way!</h4>
+    <h5>Our Little Prince is on the Way!</h5>
     <h1><%=Current.user.full_name.to_s%></h1>
     <h4 class="text-uppercase">You are invited to <%=@event.name%></h3>
     <p class="text-uppercase">that will be held on</p>
@@ -22,7 +22,8 @@
     <% @event.event_contacts.each do |contact| %>
       <h5><%=contact.name%>: <%=contact.phone_number%></h5>
     <% end %>
-    <p>We will be hosting a diaper raffle for those who wish to participate for a chance to win a prize!</p>
-    <p>We are registered at Amazon & Target if you wish to browse our wish list.</p>
+    <hr/>
+    <p><small>We will be hosting a diaper raffle for those who wish to participate for a chance to win a prize!</small></p>
+    <p><small>We are registered at Amazon & Target if you wish to browse our wish list.</small></p>
   </main>
 </div>
