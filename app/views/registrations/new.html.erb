@@ -20,10 +20,10 @@
         <div class="mb-2">
           <label for="rsvp_answer">Will be attending</label>
 
-          <%= form.radio_button :rsvp_answer, "yes", class: "btn-check" %>
+          <%= form.radio_button :rsvp_answer, "yes", required: true, class: "btn-check" %>
           <%= form.label :rsvp_answer_yes, "Yes", class: "btn btn-outline-success" %>
 
-          <%= form.radio_button :rsvp_answer, "no", class: "btn-check" %>
+          <%= form.radio_button :rsvp_answer, "no", required: true, class: "btn-check" %>
           <%= form.label :rsvp_answer_no, "No", class: "btn btn-outline-danger" %>
         </div>
 
