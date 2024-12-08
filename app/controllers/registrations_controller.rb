@@ -12,6 +12,9 @@ class RegistrationsController < ApplicationController
   def create
     if @invite.update(invite_params)
       start_new_session_for(@invite.user)
+
+      InvitationsMailer.rsvp(@invite).deliver_later
+
       redirect_to root_path, notice: "Signed up successfully"
     else
       render :new, status: :unprocessable_entity
