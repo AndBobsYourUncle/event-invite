@@ -12,11 +12,12 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  # root "posts#index"
   root to: "pages#home"
 
   get "invite/:code", to: "registrations#new", as: "invite"
   patch "invite/:code", to: "registrations#create", as: "signup"
+
+  resources :invitations, only: [:edit, :update]
 
   namespace :admin do
     root to: redirect("admin/invitations")

@@ -13,7 +13,6 @@ class RegistrationsController < ApplicationController
       start_new_session_for(@invite.user)
       redirect_to root_path, notice: "Signed up successfully"
     else
-      puts @invite.errors.inspect
       render :new, status: :unprocessable_entity
     end
   end
