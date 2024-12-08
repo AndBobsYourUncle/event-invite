@@ -30,6 +30,26 @@
     <% end %>
     <hr/>
     <p><small>We will be hosting a diaper raffle for those who wish to participate for a chance to win a prize!</small></p>
-    <p><small>We are registered at Amazon & Target if you wish to browse our wish list.</small></p>
+    <% if @event.event_registries.length > 0 %>
+      <p><small>
+        We are registered at
+
+        <% @event.event_registries.each_with_index do |er, idx| %>
+          <%=link_to er.name, er.link%><%=
+            if @event.event_registries.length <= 2 && idx < @event.event_registries.length - 1
+              " & "
+            elsif @event.event_registries.length > 2
+              if idx < @event.event_registries.length - 2
+                ", "
+              elsif idx < @event.event_registries.length - 1
+                " & "
+              end
+            end
+          %>
+        <% end %>
+
+        if you wish to browse our wish list.
+      </small></p>
+    <% end %>
   </main>
 </div>
