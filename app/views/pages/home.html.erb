@@ -1,3 +1,4 @@
+<!--
 <div class="align-self-center overflow-auto">
   <main class="container-xs text-white bg-dark text-center">
     <h1>Welcome, <%=Current.user.full_name.to_s%>!</h1>
@@ -5,5 +6,23 @@
     <p class="lead">
       <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white text-black">Learn more</a>
     </p>
+  </main>
+</div>
+-->
+<div class="align-self-center overflow-auto">
+  <main class="container-xs text-white bg-dark text-center">
+    <h5>Our Little Prince is on the Way!</h4>
+    <h1><%=Current.user.full_name.to_s%></h1>
+    <h4 class="text-uppercase">You are invited to <%=@event.name%></h3>
+    <p class="text-uppercase">that will be held on</p>
+    <h5><%=@event.event_time.strftime("%A, %b. %e %Y")%></h5>
+    <p><small><%=@event.event_time.strftime("%l:%M %P")%></small></p>
+    <p><%=@event.location%><br/><%=@event.address_1%><br/><%="#{@event.city}, #{@event.state} #{@event.zip}"%></p>
+    <h5>RSVP by <%=@event.rsvp_by.strftime("%b. #{@event.rsvp_by.day.ordinalize}")%></h5>
+    <% @event.event_contacts.each do |contact| %>
+      <h5><%=contact.name%>: <%=contact.phone_number%></h5>
+    <% end %>
+    <p>We will be hosting a diaper raffle for those who wish to participate for a chance to win a prize!</p>
+    <p>We are registered at Amazon & Target if you wish to browse our wish list.</p>
   </main>
 </div>
