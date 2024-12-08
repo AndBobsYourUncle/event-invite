@@ -5,7 +5,7 @@
     <h1 class="display-3"><%=Current.user.full_name.to_s%></h1>
     <h4 class="text-uppercase">You are invited to <%=@event.name%></h3>
     <p class="text-lowercase fw-lighter">that will be held on</p>
-    <h5><%=@event.event_time.strftime("%A, %b. %e %Y")%></h5>
+    <h5><%=@event.event_time.strftime("%A, %b. #{@event.event_time.day.ordinalize} %Y")%></h5>
     <h5><%=@event.event_time.strftime("%l:%M %P")%></h5>
     <p class="fw-lighter">
       <%=@event.location%><br/>
