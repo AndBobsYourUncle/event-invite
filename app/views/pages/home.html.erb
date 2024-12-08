@@ -19,6 +19,10 @@
       <p class="fw-lighter mb-0"><small><%=contact.name%>: <%=contact.phone_number%></small></p>
     <% end %>
     <hr/>
+    <% if !Current.user.invitation.present? || Current.user.invitation.rsvp_answer_no? %>
+      <h4>Thanks for letting us know that you will not be attending. We will definitely miss having you there!</h4>
+    <% end %>
+    <hr/>
     <p class="fw-lighter mx-auto" style="max-width:28rem;">We will be hosting a diaper raffle for those who wish to participate for a chance to win a prize!</p>
     <% if @event.event_registries.length > 0 %>
       <p class="fw-lighter mx-auto" style="max-width:28rem;">

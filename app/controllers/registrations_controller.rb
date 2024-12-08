@@ -5,23 +5,15 @@ class RegistrationsController < ApplicationController
   before_action :get_event
 
   def new
-    @user = User.new(email_address: @invite.email_address)
+    @invite.build_user(email_address: @invite.email_address, full_name: @invite.full_name)
   end
 
   def create
-    @user = User.new(user_params)
-
-    @user.full_name = @invite.full_name
-
-    ActiveRecord::Base.transaction do
-      @user.save
-      @invite.update!(user_id: @user.id)
-    end
-
-    if @user.id.present?
-      start_new_session_for(@user)
+    if @invite.update(invite_params)
+      start_new_session_for(@invite.user)
       redirect_to root_path, notice: "Signed up successfully"
     else
+      puts @invite.errors.inspect
       render :new, status: :unprocessable_entity
     end
   end
@@ -32,17 +24,22 @@ class RegistrationsController < ApplicationController
     @event = Event.last
   end
 
-  def user_params
-    params.expect(user: [ :email_address, :password, :password_confirmation ])
+  def invite_params
+    params.require(:invitation).permit(:rsvp_answer, :rsvp_count,
+      user_attributes: [:full_name, :email_address, :password, :password_confirmation])
   end
 
   def set_invite_by_code
     if Current.user.present?
       redirect_to root_path
-    end
 
-    @invite = Invitation.find_by!(invite_code: params[:code], user_id: nil)
-  rescue ActiveRecord::RecordNotFound
-    redirect_to new_session_path, alert: "Invitation code has already been used... please login below."
+      return
+    else
+      begin
+        @invite = Invitation.find_by!(invite_code: params[:code], user_id: nil)
+      rescue ActiveRecord::RecordNotFound
+        redirect_to new_session_path, alert: "Invitation code has already been used... please login below."
+      end
+    end
   end
 end

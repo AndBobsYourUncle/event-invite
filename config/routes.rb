@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   get "invite/:code", to: "registrations#new", as: "invite"
-  post "invite/:code", to: "registrations#create", as: "signup"
+  patch "invite/:code", to: "registrations#create", as: "signup"
 
   namespace :admin do
     root to: redirect("admin/invitations")

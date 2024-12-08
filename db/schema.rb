@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_07_234643) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_08_021603) do
   create_table "event_contacts", force: :cascade do |t|
     t.integer "event_id", null: false
     t.string "name"
@@ -49,6 +49,9 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_07_234643) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.string "email_address"
+    t.integer "rsvp_adult_count"
+    t.integer "rsvp_answer", default: 0
+    t.integer "rsvp_count"
     t.index ["invite_code"], name: "index_invitations_on_invite_code", unique: true
     t.index ["user_id"], name: "index_invitations_on_user_id"
   end
