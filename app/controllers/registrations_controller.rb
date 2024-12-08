@@ -1,4 +1,5 @@
 class RegistrationsController < ApplicationController
+  layout "event_design"
   optionally_authenticate
   before_action :set_invite_by_code, only: %i[ new create ]
   rate_limit to: 10, within: 1.minutes, with: -> { redirect_to new_session_url, alert: "Try again later." }

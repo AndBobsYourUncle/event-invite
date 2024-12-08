@@ -1,6 +1,7 @@
 class InvitationsController < ApplicationController
   before_action :get_event
   before_action :get_invite
+  layout "event_design"
 
   def edit
   end

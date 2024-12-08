@@ -11,7 +11,7 @@
     <%= form_with url: passwords_path do |form| %>
       <p class="lead">Enter your email to receive a link to set up a new password:</p>
 
-      <div class="form-floating">
+      <div class="form-floating mb-2">
         <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "form-control", id: "email_input" %>
         <label for="email_input">Email address</label>
       </div>

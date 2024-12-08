@@ -31,3 +31,95 @@
 // needed for mobile because 100vh is broken
 // https://www.reddit.com/r/webdev/comments/db9ugh/avoid_100vh_on_mobile_web/
 html, body { height: 100% }
+
+.border-box {
+  --mask:
+    linear-gradient(#000 0 0) 50%/calc(100% - 60px) calc(100% - 60px) no-repeat,
+    radial-gradient(30px,#0000 98%,#000) 0 -30px/55.5px 60px round no-repeat,
+    radial-gradient(30px,#0000 98%,#000) 0 calc(100% + 30px)/55.5px 60px round no-repeat,
+    radial-gradient(30px,#0000 98%,#000) -30px 0/60px 55.5px no-repeat round,
+    radial-gradient(30px,#0000 98%,#000) calc(100% + 30px) 0/60px 55.5px no-repeat round;
+  clip-path: polygon(60px 0,calc(100% - 60px) 0,100% 60px,100% calc(100% - 60px),calc(100% - 60px) 100%,60px 100%,0 calc(100% - 60px),0 60px);
+  -webkit-mask: var(--mask);
+          mask: var(--mask);
+}
+
+.glow {
+    -webkit-box-shadow: inset 0 0 85px #00b8ff;
+    -moz-box-shadow: inset 0 0 85px #00b8ff;
+    box-shadow: inset 0 0 85px #00b8ff;
+}
+
+.stripe-2 {
+  color: black;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    #ccc 10px,
+    #ccc 20px
+  ),
+  linear-gradient(
+    to bottom,
+    #eee,
+    #999
+  )
+}
+
+.stripe-4 {
+  color: white;
+  background: repeating-linear-gradient(
+    -55deg,
+    #222,
+    #222 10px,
+    #333 10px,
+    #333 20px
+  );
+}
+
+.stripe-4-custom {
+  color: white;
+  background: repeating-linear-gradient(
+    -55deg,
+    $gray-700,
+    $gray-700 20px,
+    $gray-900 20px,
+    $gray-900 40px
+  );
+}
+
+.stripe-4-custom-opposite {
+  color: white;
+  background: repeating-linear-gradient(
+    55deg,
+    $gray-700,
+    $gray-700 20px,
+    $gray-900 20px,
+    $gray-900 40px
+  );
+}
+
+.stripe-5 {
+  color: white;
+  background: linear-gradient(
+    to bottom,
+    #5d9634,
+    #5d9634 50%,
+    #538c2b 50%,
+    #538c2b
+  );
+  background-size: 100% 20px;
+}
+
+.stripe-5-custom {
+  color: white;
+  background: linear-gradient(
+    to bottom,
+    $gray-800,
+    $gray-800 50%,
+    $gray-900 50%,
+    $gray-900
+  );
+  background-size: 100% 20px;
+}
+

@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  layout "event_design"
   before_action :resume_session, only: [ :home ]
   before_action :get_event
 

@@ -11,11 +11,11 @@
     <%= form_with url: session_path do |form| %>
       <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
-      <div class="form-floating">
+      <div class="form-floating mb-2">
         <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "form-control", id: "email_input" %>
         <label for="email_input">Email address</label>
       </div>
-      <div class="form-floating">
+      <div class="form-floating mb-2">
         <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: "form-control", id: "password_input" %>
         <label for="password_input">Password</label>
       </div>

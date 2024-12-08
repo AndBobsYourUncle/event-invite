@@ -11,12 +11,12 @@
     <%= form_with url: password_path(params[:token]), method: :put do |form| %>
       <h1 class="h3 mb-3 fw-normal">Update your password</h1>
 
-      <div class="form-floating">
+      <div class="form-floating mb-2">
         <%= form.password_field :password, required: true, autofocus: true, autocomplete: "new-password", placeholder: "Enter new password", maxlength: 72, class: "form-control top-border-input", id: "floatingPassword" %>
         <label for="floatingPassword">Password</label>
       </div>
 
-      <div class="form-floating">
+      <div class="form-floating mb-2">
         <%= form.password_field :password_confirmation, required: true, autocomplete: "confirm-password", placeholder: "Repeat new password", maxlength: 72, class: "form-control bottom-border-input", id: "floatingPasswordConfirm" %>
         <label for="floatingPasswordConfirm">Password confirmation</label>
       </div>
