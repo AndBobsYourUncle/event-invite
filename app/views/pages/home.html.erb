@@ -4,7 +4,7 @@
     <hr/>
     <h1 class="display-3"><%=Current.user.full_name.to_s%></h1>
     <h4 class="text-uppercase">You are invited to <%=@event.name%></h3>
-    <p class="text-lowercase fw-lighter">to be held on</p>
+    <p class="text-lowercase fw-lighter">that will be held on</p>
     <h5><%=@event.event_time.strftime("%A, %b. %e %Y")%></h5>
     <h5><%=@event.event_time.strftime("%l:%M %P")%></h5>
     <p class="fw-lighter">
@@ -16,7 +16,7 @@
     </p>
     <h5>RSVP by <%=@event.rsvp_by.strftime("%b. #{@event.rsvp_by.day.ordinalize}")%></h5>
     <% @event.event_contacts.each do |contact| %>
-      <h5><%=contact.name%>: <%=contact.phone_number%></h5>
+      <p class="fw-lighter mb-0"><small><%=contact.name%>: <%=contact.phone_number%></small></p>
     <% end %>
     <hr/>
     <p class="fw-lighter mx-auto" style="max-width:28rem;">We will be hosting a diaper raffle for those who wish to participate for a chance to win a prize!</p>
