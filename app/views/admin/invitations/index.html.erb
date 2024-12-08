@@ -29,7 +29,7 @@
       </thead>
       <tbody>
         <% @invites.each do |invite| %>
-        <tr>
+        <tr class="text-nowrap">
           <td><%=invite.id%></td>
           <td class="<%=
             if invite.rsvp_answer_yes?
