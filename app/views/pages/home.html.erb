@@ -19,19 +19,21 @@
       <p class="fw-lighter mb-0"><small><%=contact.name%>: <%=contact.phone_number%></small></p>
     <% end %>
     <hr/>
-    <% if !Current.user.invitation.present? || Current.user.invitation.rsvp_answer_no? %>
-      <h4>Thanks for letting us know that you will not be attending. We will definitely miss having you there!</h4>
-    <% else %>
-      <h4>Thanks for confirming that you<%=
-        if Current.user.invitation.rsvp_count > 1
-          " and #{Current.user.invitation.rsvp_count - 1} other guest#{"s" if Current.user.invitation.rsvp_count > 2}"
-        else
-          ""
-        end
-      %> will be attending. We look forward to seeing you there!</h4>
+    <% if Current.user.invitation.present? %>
+      <% if Current.user.invitation.rsvp_answer_no? %>
+        <h4>Thanks for letting us know that you will not be attending. We will definitely miss having you there!</h4>
+      <% else %>
+        <h4>Thanks for confirming that you<%=
+          if Current.user.invitation.rsvp_count > 1
+            " and #{Current.user.invitation.rsvp_count - 1} other guest#{"s" if Current.user.invitation.rsvp_count > 2}"
+          else
+            ""
+          end
+        %> will be attending. We look forward to seeing you there!</h4>
+      <% end %>
+      <%= link_to "Update RSVP", edit_invitation_path(Current.user.invitation), class: "btn btn-primary mb-2", role: "button" %>
+      <hr/>
     <% end %>
-    <%= link_to "Update RSVP", edit_invitation_path(Current.user.invitation), class: "btn btn-primary mb-2", role: "button" %>
-    <hr/>
     <p class="fw-lighter mx-auto" style="max-width:28rem;">We will be hosting a diaper raffle for those who wish to participate for a chance to win a prize!</p>
     <% if @event.event_registries.length > 0 %>
       <p class="fw-lighter mx-auto" style="max-width:28rem;">
