@@ -16,6 +16,11 @@
   max-width: 42em;
 }
 
+.container-xxs {
+  @include make-container();
+  max-width: 21em;
+}
+
 /* this is needed to make the content scrollable on larger screens */
 @media (min-width: 576px) {
     .h-sm-100 {

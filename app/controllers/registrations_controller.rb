@@ -2,6 +2,7 @@ class RegistrationsController < ApplicationController
   optionally_authenticate
   before_action :set_invite_by_code, only: %i[ new create ]
   rate_limit to: 10, within: 1.minutes, with: -> { redirect_to new_session_url, alert: "Try again later." }
+  before_action :get_event
 
   def new
     @user = User.new(email_address: @invite.email_address)
@@ -26,6 +27,10 @@ class RegistrationsController < ApplicationController
   end
 
   private
+
+  def get_event
+    @event = Event.last
+  end
 
   def user_params
     params.expect(user: [ :email_address, :password, :password_confirmation ])
