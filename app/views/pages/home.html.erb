@@ -24,7 +24,7 @@
     <% else %>
       <h4>Thanks for confirming that you<%=
         if Current.user.invitation.rsvp_count > 1
-          " and #{Current.user.invitation.rsvp_count - 1} guest#{"s" if Current.user.invitation.rsvp_count > 2}"
+          " and #{Current.user.invitation.rsvp_count - 1} other guest#{"s" if Current.user.invitation.rsvp_count > 2}"
         else
           ""
         end
