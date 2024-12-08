@@ -17,6 +17,8 @@
       <thead>
         <tr>
           <th scope="col">#</th>
+          <th scope="col">RSVP</th>
+          <th scope="col">RSVP Count</th>
           <th scope="col">Full Name</th>
           <th scope="col">Email</th>
           <th scope="col">Invite Link</th>
@@ -29,6 +31,8 @@
         <% @invites.each do |invite| %>
         <tr>
           <td><%=invite.id%></td>
+          <td><%=invite.rsvp_answer.humanize%></td>
+          <td><%=invite.rsvp_count%></td>
           <td><%=invite.full_name%></td>
           <td><%=invite.email_address%></td>
           <td><%=link_to invite_url(invite.invite_code), invite_url(invite.invite_code)%></td>
