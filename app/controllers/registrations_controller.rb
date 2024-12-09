@@ -46,7 +46,13 @@ class RegistrationsController < ApplicationController
       nil
     else
       begin
-        @invite = Invitation.find_by!(invite_code: params[:code], user_id: nil)
+        @invite = Invitation.find_by!(invite_code: params[:code])
+
+        if @invite.user.present?
+          start_new_session_for(@invite.user)
+
+          redirect_to root_path
+        end
       rescue ActiveRecord::RecordNotFound
         redirect_to new_session_path, alert: "Invitation code has already been used... please login below."
       end
