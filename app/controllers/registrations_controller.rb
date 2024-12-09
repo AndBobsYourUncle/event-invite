@@ -10,7 +10,14 @@ class RegistrationsController < ApplicationController
   end
 
   def create
-    if @invite.update(invite_params)
+    injected_params = invite_params
+
+    generated_password = SecureRandom.hex(32)
+
+    injected_params[:user_attributes][:password] = generated_password
+    injected_params[:user_attributes][:password_confirmation] = generated_password
+
+    if @invite.update(injected_params)
       start_new_session_for(@invite.user)
 
       InvitationsMailer.rsvp(@invite).deliver_later
