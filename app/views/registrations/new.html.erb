@@ -15,7 +15,7 @@
     <% end %>
 
     <p class="lead">Register and RSVP online:</p>
-    <%= form_with(model: @invite, url: signup_path(params[:code]), data: { turbo: false }) do |form| %>
+    <%= form_with(model: @invite, url: signup_path(params[:code])) do |form| %>
       <div class="text-start">
         <div class="mb-2">
           <label for="rsvp_answer">Will be attending</label>
