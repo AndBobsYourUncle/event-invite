@@ -40,7 +40,7 @@
           %>"><%=invite.rsvp_answer.humanize%></td>
           <td><%=invite.rsvp_count%></td>
           <td><%=invite.full_name%></td>
-          <td><%=invite.email_address%></td>
+          <td><%=invite.email_address.present? ? invite.email_address : invite.user&.email_address%></td>
           <td><%=link_to invite_url(invite.invite_code), invite_url(invite.invite_code)%></td>
           <td><%=invite.user.present?%></td>
           <td><%=(invite.updated_at if invite.user.present?)%></td>
