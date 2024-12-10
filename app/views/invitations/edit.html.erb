@@ -15,7 +15,7 @@
     <% end %>
 
     <p class="lead">Register and RSVP online:</p>
-    <%= form_with(model: @invite, data: { turbo: false }) do |form| %>
+    <%= form_with(model: @invite) do |form| %>
       <div class="text-start">
         <div class="mb-2">
           <label for="rsvp_answer">Will be attending</label>
