@@ -14,15 +14,23 @@ class RegistrationsController < ApplicationController
 
     generated_password = SecureRandom.hex(32)
 
-    injected_params[:user_attributes][:password] = generated_password
-    injected_params[:user_attributes][:password_confirmation] = generated_password
+    if injected_params[:user_attributes][:email_address].to_s == ""
+      injected_params.delete(:user_attributes)
+    else
+      injected_params[:user_attributes][:password] = generated_password
+      injected_params[:user_attributes][:password_confirmation] = generated_password
+    end
 
     if @invite.update(injected_params)
-      start_new_session_for(@invite.user)
-
       InvitationsMailer.rsvp(@invite).deliver_later
 
-      redirect_to root_path, notice: "Signed up successfully"
+      if @invite.user
+        start_new_session_for(@invite.user)
+
+        redirect_to root_path, notice: "Signed up successfully"
+      else
+        redirect_to invite_path(code: params[:code]), notice: "RSVP confirmed!"
+      end
     else
       render :new, status: :unprocessable_entity
     end

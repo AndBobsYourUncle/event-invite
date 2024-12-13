@@ -14,7 +14,12 @@
       <% end %>
     <% end %>
 
-    <p class="lead">Register and RSVP online:</p>
+    <% if !@invite.rsvp_answer_no_answer? %>
+      <p class="lead">Update your RSVP:</p>
+    <% else %>
+      <p class="lead">Register and RSVP online:</p>
+    <% end %>
+
     <%= form_with(model: @invite, url: signup_path(params[:code])) do |form| %>
       <div class="text-start">
         <div class="mb-2">
@@ -41,8 +46,8 @@
         <%= form.fields_for :user do |user| %>
           <%= user.hidden_field :full_name %>
 
-          <label for="email_input">Email address</label>
-          <%= user.email_field :email_address, required: true, autocomplete: "email_address", placeholder: "Enter your email address", class: "form-control mb-2", id: "email_input" %>
+          <label for="email_input">Email address (optional)</label>
+          <%= user.email_field :email_address, autocomplete: "email_address", placeholder: "Enter your email address", class: "form-control mb-2", id: "email_input" %>
 
           <!--
           <label for="password_input">Password</label>
